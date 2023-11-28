@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tags Page</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+  <script src="https://kit.fontawesome.com/b8f66c2488.js" crossorigin="anonymous"></script>
+</head>
+<body>
+   <div class="wrapper">
+   <!-- Navbar -->
+   <header>
+    <div class="nav-container">
+      <nav>
+        <div class="nav-brand">
+          <div class="hamburger-menu-container">
+
+
+          </div>
+
+          <a href="" class="nav-icon">
+            <i class="fa-brands fa-buffer"></i>
+            <a href="{% url 'stackbase:home' %}" style="text-decoration: none; color: black;">
+              <div class="nav-icon-text">JIITian's<span class="nav-bold-text"> flow</span>
+            </a>
+          </a>
+        </div>
+        <div class="nav-base-links">
+          <ul>
+            <li><a href="../resources/index.php">Resources</a></li>
+            <li><a href="../tags/index.html">Tags</a></li>
+          </ul>
+        </div>
+        <div class="nav-search">
+          <div class="search-container">
+            <i class="fa-brands fa-sistrix"></i>
+            <form action="" method="GET">
+              <input type="text" id="" name="search-area" placeholder="Search...">
+
+            </form>
+          </div>
+          <button class="btn-register" style="margin-left: 20px;"> Login</button>
+
+        </div>
+      </nav>
+    </div>
+  </header>
+   <!-- sidebar -->
+   <div>
+    <div class="sidebar-container">
+      <div class="sidebar-logo">
+        JIITian flow
+      </div>
+      <ul class="sidebar-navigation">
+        <li class="header">Navigation</li>
+        <li>
+          <a href="../Main_page/index.html">
+            <i class="fa fa-home" aria-hidden="true" aria-setsize="10px"></i> Homepage
+          </a>
+        </li>
+        <li>
+          <a href="../top_questions/index.html">
+            <i class="fa fa-question" aria-hidden="true"></i> Questions
+          </a>
+        </li>
+        <li class="header">Public</li>
+        <li>
+          <a href="../resources/index.php">
+            <i class="fa fa-book" aria-hidden="true"></i> Resources
+          </a>
+        </li>
+        <li>
+          <a href="../tags/index.html">
+            <i class="fa fa-tags" aria-hidden="true"></i> Tags
+          </a>
+        </li>
+        <li>
+          <a href="../users/index.html">
+            <i class="fa fa-users" aria-hidden="true"></i> Users
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+   <!-- Tags -->
+  <div>
+  <div class='home-container-1'>
+    <div class="left-sidebar"></div>
+    <div class="home-container-2">
+      <h1 class='tags-h1'>Tags</h1>
+      <p class='tags-p'>A tag is a keyword or label that categorizes your question with other, similar questions.</p>
+      <p class='tags-p'>Using the right tags makes it easier for others to find and answer your question.</p>
+      <div class='tags-list-container' id="tags-list-container"></div>
+    </div>
+  </div></div>
+</div>
+  <script src="script.js"></script>
+</body>
+</html>

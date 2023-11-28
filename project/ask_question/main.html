@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/b8f66c2488.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- navbar -->
+    <header>
+        <div class="nav-container">
+            <nav>
+                <div class="nav-brand">
+                    <div class="hamburger-menu-container">
+                       
+                        
+                    </div>
+        
+                    <a href="" class="nav-icon">
+                        <i class="fa-brands fa-buffer"></i>
+                        <a href="{% url 'stackbase:home' %}" style="text-decoration: none; color: black;"><div class="nav-icon-text">JIITian's<span class="nav-bold-text"> flow</span></a>
+                    </a>
+                </div>
+                <div class="nav-base-links">
+                    <ul>
+                        <li><a href="#">Questions</a></li>
+                        <li><a href="#">PYQ's</a></li>
+                        <li><a href="#">Community</a></li>
+                    </ul>
+                </div>
+                <div class="nav-search">
+                    <div class="search-container">
+                        <i class="fa-brands fa-sistrix"></i>
+                        <form action="" method="GET">
+                            <input type="text" id="" name="search-area" placeholder="Search...">
+                            
+                        </form>
+                    </div>
+                    <button class="btn-register" style="margin-left: 20px;"> Login</button>
+
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <!--ASK Questions -->
+    <div class="main-container" >
+    <h1 style="margin-bottom: 50px; font-size: 3rem;">Ask a Public Question</h1>
+    <div class="wrapper">
+    <div class="question-container">
+      <div class="question-title">
+        <h3>Title</h3>
+        <p> Be specific and imagine you're asking a question to another person</p>
+        <input type="text" name="title" >
+      </div>
+
+      <div class="question-body">
+        <h3>Body</h3>
+        <p>Include all the information someone would need to answer your question</p>
+        <textarea id="body" rows="8" cols="50"></textarea>
+      </div>
+
+      <div class="question-tags">
+        <h3 style="font-size: 2rem;">Tags</h3>
+        <p>Add up to 5 tags to describe what your question is about</p>
+        <div id="addedTags"></div>
+        <div style="display: flex;">
+        <input type="text" id="tagsInput">
+        <button id="addTagBtn">Add Tag</button>
+    </div>
+    </div>
+    
+    </div>
+    </div>
+    <button class="btn-login" style="margin-top:30px;">Review your Question</button>
+</div>
+  <script>
+function addTag() {
+    const tagInput = document.getElementById('tagsInput');
+    const tagText = tagInput.value.trim();
+  
+    if (tagText !== '') {
+        const addedTagsContainer = document.getElementById('addedTags');
+        const tagElement = document.createElement('div');
+        tagElement.classList.add('tag');
+        tagElement.innerHTML = `
+            <span>${tagText}</span>
+            <button class="removeTagBtn">X</button>
+        `;
+        
+        const removeBtn = tagElement.querySelector('.removeTagBtn');
+        removeBtn.addEventListener('click', function() {
+            tagElement.remove();
+        });
+
+        addedTagsContainer.appendChild(tagElement);
+        tagInput.value = ''; // Clear the input field after adding a tag
+
+        const tags = addedTagsContainer.querySelectorAll('.tag');
+        if (tags.length >= 5) {
+            alert("not more than 5 tags");
+            tagInput.disabled = true;
+        } else {
+            tagInput.disabled = false;
+        }
+    }
+}
+
+let addTagBtn = document.getElementById('addTagBtn');
+addTagBtn.addEventListener('click', addTag);
+
+document.querySelector('.btn-login').addEventListener('click', function() {
+    const title = document.querySelector('input[name="title"]').value;
+    const body = document.getElementById('body').value;
+    const tags = Array.from(document.querySelectorAll('.tag span')).map(tag => tag.textContent).join(',');
+
+    //here need to get email from localstorage
+    // const email = localStorage.getItem('userEmail');
+    const email = "ganesh@gmail.com";
+
+    const data = {
+        title: title,
+        body: body,
+        tags: tags,
+        email: email
+    };
+
+    fetch('question.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        // Handle the response if needed
+        console.log('Question sent to PHP file.');
+        console.log(response)
+        // Redirect or do something else after sending the question
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+});
+
+    
+  </script>
+</body>
+</html>
+
+

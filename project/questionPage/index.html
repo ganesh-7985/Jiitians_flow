@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Questions Details</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="question-details-page">
+    <!-- Answer input and post button -->
+    <section class="post-ans-container">
+      <h3>Your Answer</h3>
+      <form id="postAnswerForm">
+        <textarea id="answerInput" cols="30" rows="10"></textarea><br>
+        <input type="submit" class="post-ans-btn" value="Post Your Answer">
+      </form>
+      <!-- Other elements related to answers -->
+    </section>
+
+    <!-- Question elements with upvote/downvote buttons -->
+    <section class="question-container">
+      <h1>Sample Question</h1>
+      <div class="question-actions">
+        <button class="upvote-btn" data-question-id="1">Upvote</button>
+        <span id="upVote_1">3</span>
+        <button class="downvote-btn" data-question-id="1">Downvote</button>
+        <span id="downVote_1">2</span>
+      </div>
+      <!-- Other question details -->
+    </section>
+
+    <!-- Other question sections and elements -->
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
